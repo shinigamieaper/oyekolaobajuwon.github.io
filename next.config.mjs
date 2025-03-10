@@ -1,23 +1,11 @@
-import { withSentryConfig } from "@sentry/nextjs";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "export",  // Enables static export for GitHub Pages
-    reactStrictMode: true, // Improves debugging
+    output: "export", // Keeps GitHub Pages working
+    reactStrictMode: true,
+    basePath: "/oyekolaobajuwon.github.io", // Important for GitHub Pages!
+    images: {
+        unoptimized: true, // Fixes image issues on GitHub Pages
+    },
 };
 
-export default withSentryConfig(
-    nextConfig,
-    {
-        silent: true,
-        org: "javascript-mastery",
-        project: "javascript-nextjs",
-    },
-    {
-        widenClientFileUpload: true,
-        transpileClientSDK: true,
-        hideSourceMaps: true,
-        disableLogger: true,
-        automaticVercelMonitors: true,
-    }
-);
+export default nextConfig;
